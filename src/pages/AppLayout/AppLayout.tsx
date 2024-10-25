@@ -2,6 +2,7 @@ import {
   LayoutWrapper,
   AppHeader,
   HeaderLogo,
+  LogoText,
   HeaderNav,
   HeaderLink,
   Main,
@@ -41,7 +42,7 @@ function AppLayout({ children }: AppLayoutProps) {
   return (
     <LayoutWrapper>
       <AppHeader>
-        <HeaderLogo onClick={goToHomePage}></HeaderLogo>
+        <HeaderLogo onClick={goToHomePage}><LogoText>Weather App</LogoText></HeaderLogo>
         <HeaderNav>{headerLinks}</HeaderNav>
       </AppHeader>
       <Main>{children}</Main>

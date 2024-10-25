@@ -21,10 +21,16 @@ export const AppHeader = styled.header`
 export const HeaderLogo = styled.div`
   display: flex;
   align-items: center;
-  font-family: "Lato", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
+  line-height: 30px;
   cursor: pointer;
+`;
+
+export const LogoText = styled.span`
+font-family: "Inter";
+font-size: 24px;
+font-weight: 700;
+text-align: left;
+
 `;
 
 export const HeaderNav = styled.nav`

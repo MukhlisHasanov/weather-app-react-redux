@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 
 export const SearchForm = styled.form`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100%;
   border: 1px solid black;
   text-align: center;
@@ -20,4 +20,37 @@ export const InputContainer = styled.div`
   gap: 20px;
   font-size: 44px;
   text-align: left;
+`
+
+
+export const SearchButtonContainer = styled.div`
+
+`
+
+export const WeatherBar = styled.div`
+
+`
+
+export const WeatherContainer = styled.div`
+
+`
+
+export const WeatherCondition = styled.div`
+
+`
+
+export const Temperature = styled.div`
+
+`
+
+export const City = styled.div`
+
+`
+
+export const Icons = styled.div`
+
+`
+
+export const ButtonContainer = styled.div`
+
 `
