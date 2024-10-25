@@ -1,7 +1,7 @@
 import GlobalStyles from "styles/GlobalStyles"
 import { Route, Routes } from "react-router-dom"
 
-import Layout from "pages/Layout/Layout"
+import AppLayout from "pages/AppLayout/AppLayout"
 import Home from "pages/Home/Home"
 import Weathers from "pages/Weathers/Weathers"
 
@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Layout>
+      <AppLayout>
         <Routes>
           <Route
             path={APP_ROUTES.HOME}
@@ -26,7 +26,7 @@ function App() {
             element="Page Is Not Found"
           />
         </Routes>
-      </Layout>
+      </AppLayout>
     </>
   )
 }

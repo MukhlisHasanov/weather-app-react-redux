@@ -1,14 +1,11 @@
 import { useNavigate } from "react-router-dom"
-import { useFormik } from "formik"
-import * as Yup from "yup"
 
 import Input from "components/Input/Input"
 import Button from "components/Button/Button"
 
+import { APP_ROUTES } from "constants/routes"
 
-import { APP_EMPLOYEE_ROUTES } from "constants/routes"
-
-import { EmployeeFormContainer, InputContainer } from "./styles"
+import { SearchForm, InputContainer } from "./styles"
 import { EMPLOYEE_FORM_NAMES } from "./types"
 
 import { useAppDispatch } from "store/hooks"
@@ -56,7 +53,7 @@ function EmployeeForm() {
   })
 
   return (
-    <EmployeeFormContainer onSubmit={formik.handleSubmit}>
+    <SearchForm onSubmit={formik.handleSubmit}>
       <InputContainer>
         <Input
           id="employee-name"
@@ -67,37 +64,10 @@ function EmployeeForm() {
           value={formik.values.name}
           error={formik.errors.name}
         />
-        <Input
-          id="employee-surname"
-          name={EMPLOYEE_FORM_NAMES.SURNAME}
-          placeholder="Enter your surname"
-          label="Surname*"
-          onChange={formik.handleChange}
-          value={formik.values.surname}
-          error={formik.errors.surname}
-        />
-        <Input
-          id="employee-age"
-          name={EMPLOYEE_FORM_NAMES.AGE}
-          placeholder="Enter your age"
-          label="Age*"
-          onChange={formik.handleChange}
-          value={formik.values.age}
-          error={formik.errors.age}
-        />
-        <Input
-          id="employee-job-position"
-          name={EMPLOYEE_FORM_NAMES.JOB_POSITION}
-          placeholder="Enter your job position"
-          label="Job Position"
-          onChange={formik.handleChange}
-          value={formik.values.jobPosition}
-          error={formik.errors.jobPosition}
-        />
       </InputContainer>
 
-      <Button type="submit" name="Create" />
-    </EmployeeFormContainer>
+      <Button type="submit" name="Search" />
+    </SearchForm>
   )
 }
 export default EmployeeForm

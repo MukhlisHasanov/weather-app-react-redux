@@ -1,1 +1,1 @@
-export {default as EmployeeAppLogo } from "./employeeAppLogo.png"
+// export {default as EmployeeAppLogo } from "./employeeAppLogo.png"

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 
-export const EmployeeFormContainer = styled.form`
+export const SearchForm = styled.form`
   display: flex;
   flex-direction: column;
   height: 100%;

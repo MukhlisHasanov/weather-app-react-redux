@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 
-export const EmployeeLayoutWrapper = styled.div`
+export const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -25,11 +25,6 @@ export const HeaderLogo = styled.div`
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-`;
-
-export const LogoImg = styled.img`
-  width: 100%;
-  height: 100%;
 `;
 
 export const HeaderNav = styled.nav`
