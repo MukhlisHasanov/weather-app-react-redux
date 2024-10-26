@@ -75,9 +75,9 @@ function HomePage() {
   return(
   <PageWrapper>
     <SearchForm>
-      <InputContainer>Input</InputContainer>
+      <InputContainer></InputContainer>
       <SearchButtonContainer>
-        <Button type="submit" name="Search" />
+        <Button type="submit" name="Search" /> 
       </SearchButtonContainer>
     </SearchForm>
     <WeatherBar>
