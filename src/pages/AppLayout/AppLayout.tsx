@@ -2,7 +2,6 @@ import { v4 } from "uuid"
 import { useNavigate } from "react-router-dom"
 
 import { APP_ROUTES } from "constants/routes"
-import { MainBackGround } from "assets"
 
 import { AppLayoutProps } from "./types"
 import {

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
 import { NavLink } from "react-router-dom"
+import { MainBackGround } from "assets"
 
 export const LayoutWrapper = styled.div`
   display: flex;
@@ -51,18 +52,17 @@ export const Main = styled.main`
   display: flex;
   padding: 120px;
   flex: 1;
-  /* background-color: #112233; */
   justify-content: center;
   color: white;
-
-  /* position: absolute;
-width: 1920px;
-height: 1080px; */
-
-  background: linear-gradient(
-    0deg,
-    rgba(29, 32, 45, 0.3),
-    rgba(29, 32, 45, 0.3)
-  );
-  background-image: url("background-img-rain.png");
+  background-position: center;
+  background-image: linear-gradient(
+      0deg,
+      rgba(29, 32, 45, 0.3),
+      rgba(29, 32, 45, 0.3)
+    ),
+    url(${MainBackGround});
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `
