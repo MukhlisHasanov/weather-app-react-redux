@@ -2,11 +2,11 @@ import { Global, css } from "@emotion/react"
 
 function GlobalStyles() {
   const globalAppStyles = css`
-    @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+    @import url("https://fonts.google.com/share?selection.family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900|Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900");
     
     * {
       box-sizing: border-box;
-      font-family: "Lato", sans-serif;
+      font-family: "Inter";
     }
 
     body,
