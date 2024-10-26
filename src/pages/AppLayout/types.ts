@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export interface EmployeeLayoutProps {
+export interface AppLayoutProps {
   children: ReactNode;
 }
