@@ -17,9 +17,20 @@ import { useAppSelector, useAppDispatch } from "store/hooks"
 // import { Employee } from "store/redux/employeeApp/types"
 import Button from "components/Button/Button"
 
-function Weathers() {
-  // const dispatch = useAppDispatch()
+import {
+  weatherAppSelectors,
+  weatherAppActions
+} from "store/redux/WeatherAppSlice";
+import { WeatherEntry } from "./types";
 
+
+
+function Weathers() {
+  const dispatch = useAppDispatch();
+  const weatherData: WeatherEntry[] = useAppSelector(weatherAppSelectors.getWeatherEntries); // Verwende den richtigen Typ
+
+  // const dispatch = useAppDispatch()
+  // const weatherData = useAppSelector(weatherAppSelectors.getWeatherEntries);
   // const deleteAllEmployees = () => {
   //   dispatch(employeeSliceActions.deleteAllEmployees())
   // }
@@ -29,6 +40,10 @@ function Weathers() {
   //   const deleteEmployee = () => {
   //     dispatch(employeeSliceActions.deleteEmployee({ id: employee.id }))
   //   }
+  const removeWeather = (id: string) => {
+    dispatch(weatherAppActions.removeWeatherEntry({ id }));
+  };
+
   //   return (
   //     <PageWrapper>
   //       <CardWrapper>
@@ -54,13 +69,20 @@ function Weathers() {
   //   )
   // })
   return (
-    <PageWrapper>
+    <PageWrapper> 
       <CardsPosition>CardPosition
-        {/* {employeeInitialState.length > 0 ? (
+        {weatherData.map((entry) => (
+        <div key={entry.id}>
+          <p>{entry.city}: {entry.temperature}°C</p>
+          <Button name="Remove" onClick={() => removeWeather(entry.id)} />
+        </div>
+      ))
+        /* {employeeInitialState.length > 0 ? (
           employeeCards
         ) : (
           <UsersNotFound>Users not found</UsersNotFound>
-        )} */}
+        )} */
+        }
       </CardsPosition>
 
       {/* {employeeInitialState.length > 0 && (

@@ -1,11 +1,13 @@
-export interface Employee {
-  id: string
-  name: string
-  surname: string
-  age: string
-  jobPosition: string
+export interface WeatherEntry {
+  id: string;
+  city: string;
+  temperature: number;
 }
 
-export interface EmployeeSliceInitialState {
-  data: Employee[]
+export interface WeatherSliceInitialState {
+  data: WeatherEntry[];
 }
+
+export const weatherInitialState: WeatherSliceInitialState = {
+  data: [],
+};

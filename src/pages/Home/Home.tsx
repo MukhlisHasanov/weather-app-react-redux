@@ -28,17 +28,24 @@ function HomePage() {
 
   const dispatch = useAppDispatch()
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     [EMPLOYEE_FORM_NAMES.NAME]: "",
-  //   },
+  const formik = useFormik({
 
-  //   onSubmit: values => {
-  //     dispatch(employeeSliceActions.createEmployee(values))
-  //     navigate(APP_ROUTES.WEATHERS)
-  //   },
-  // })
+  //    initialValues: {
+ //     city: "",
+ //   },
+//    onSubmit: (values) => {
+ //        console.log(values);      
+ //   },
+ // });
 
+
+  initialValues: {
+    city: "",
+  },
+  onSubmit: (values) => {
+    
+  },
+});
   //   return (
   //     <SearchForm onSubmit={formik.handleSubmit}>
   //       <InputContainer>
