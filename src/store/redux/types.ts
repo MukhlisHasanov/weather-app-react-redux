@@ -1,11 +1,13 @@
-export interface Employee {
+export interface Weather {
   id: string
   name: string
-  surname: string
-  age: string
-  jobPosition: string
+  city: string
+  temperature: string
+  image: string
 }
 
-export interface EmployeeSliceInitialState {
-  data: Employee[]
+export interface WeatherSliceInitialState {
+  data: Weather[]
+  error: undefined | string
+  isFetching: boolean
 }

@@ -1,10 +1,10 @@
-import { InputProps } from "./types";
+import { InputProps } from "./types"
 import {
   InputWrapper,
   InputComponent,
   InputLabel,
   ErrorContainer,
-} from "./styles";
+} from "./styles"
 
 function Input({
   id,
@@ -32,7 +32,7 @@ function Input({
       />
       <ErrorContainer>{error}</ErrorContainer>
     </InputWrapper>
-  );
+  )
 }
 
-export default Input;
+export default Input

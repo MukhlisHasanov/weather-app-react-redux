@@ -72,28 +72,32 @@ function HomePage() {
   //     </WeatherBar>
   //   )
 
-  return(
-  <PageWrapper>
-    <SearchForm>
-      <InputContainer>Input</InputContainer>
-      <SearchButtonContainer>
-        <Button type="submit" name="Search" />
-      </SearchButtonContainer>
-    </SearchForm>
-    <WeatherBar>
-      <WeatherContainer>
-        <WeatherCondition>
-          <Temperature>Temperature</Temperature>
-          <City>City</City>
-        </WeatherCondition>
-        <Icons>Icons</Icons>
-      </WeatherContainer>
-      <ButtonContainer>
-        {/* <Button name="Save" onClick={} />
+  return (
+    <PageWrapper>
+      <SearchForm>
+        <Input
+          id="searchInputId"
+          name="searchInput"
+          placeholder="Enter a city name"
+        />
+        <SearchButtonContainer>
+          <Button type="submit" name="Search" />
+        </SearchButtonContainer>
+      </SearchForm>
+      <WeatherBar>
+        <WeatherContainer>
+          <WeatherCondition>
+            <Temperature>Temperature</Temperature>
+            <City>City</City>
+          </WeatherCondition>
+          <Icons>Icons</Icons>
+        </WeatherContainer>
+        <ButtonContainer>
+          {/* <Button name="Save" onClick={} />
         <Button name="Delete" onClick={} /> */}
-      </ButtonContainer>
-    </WeatherBar>
-  </PageWrapper>
+        </ButtonContainer>
+      </WeatherBar>
+    </PageWrapper>
   )
 }
 

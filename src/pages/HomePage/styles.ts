@@ -13,7 +13,7 @@ export const SearchForm = styled.div`
   padding: 0px;
   width: 710px;
   border-radius: 4px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 `
 
 export const InputContainer = styled.div`
