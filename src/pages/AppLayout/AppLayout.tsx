@@ -1,3 +1,10 @@
+import { v4 } from "uuid"
+import { useNavigate } from "react-router-dom"
+
+import { APP_ROUTES } from "constants/routes"
+import { MainBackGround } from "assets"
+
+import { AppLayoutProps } from "./types"
 import {
   LayoutWrapper,
   AppHeader,
@@ -7,13 +14,6 @@ import {
   HeaderLink,
   Main,
 } from "./styles"
-
-import { v4 } from "uuid"
-import { useNavigate } from "react-router-dom"
-
-import { APP_ROUTES } from "constants/routes"
-
-import { AppLayoutProps } from "./types"
 
 function AppLayout({ children }: AppLayoutProps) {
   const navigate = useNavigate()
@@ -42,7 +42,9 @@ function AppLayout({ children }: AppLayoutProps) {
   return (
     <LayoutWrapper>
       <AppHeader>
-        <HeaderLogo onClick={goToHomePage}><LogoText>Weather App</LogoText></HeaderLogo>
+        <HeaderLogo onClick={goToHomePage}>
+          <LogoText>Weather App</LogoText>
+        </HeaderLogo>
         <HeaderNav>{headerLinks}</HeaderNav>
       </AppHeader>
       <Main>{children}</Main>
