@@ -77,20 +77,20 @@ function HomePage() {
     <SearchForm>
       <InputContainer></InputContainer>
       <SearchButtonContainer>
-        <Button type="submit" name="Search" /> 
+        <Button type="submit" name="Search" isSearchButton/> 
       </SearchButtonContainer>
     </SearchForm>
     <WeatherBar>
       <WeatherContainer>
         <WeatherCondition>
-          <Temperature>Temperature</Temperature>
-          <City>City</City>
+          <Temperature>18.0</Temperature>
+          <City>Colrado</City>
         </WeatherCondition>
         <Icons>Icons</Icons>
       </WeatherContainer>
       <ButtonContainer>
-        {/* <Button name="Save" onClick={} />
-        <Button name="Delete" onClick={} /> */}
+        <Button name="Save"  />
+        <Button name="Delete"  />
       </ButtonContainer>
     </WeatherBar>
   </PageWrapper>

@@ -12,29 +12,27 @@ export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
   width: 100%;
   height: 48px;
   border: none;
-  /* background-color: ${({ $isDeleteVariant, disabled, $isSearchButton }) => {
+  background-color: ${({ $isDeleteVariant, disabled, $isSearchButton }) => {
     if (disabled) {
       return colors.GREY
     } else {
       if ($isDeleteVariant) {
         return colors.ERROR
-      } else{
-        if ($isSearchButton) {
-          return colors.SEARCH_BLUE        
       } else {
-        return colors.SEARCH_BLUE
+        if ($isSearchButton) {
+          return colors.SEARCH_BLUE
+        } else {
+          return colors.TRANSPARENT
+        }
       }
     }
-  }}}; */
-  background-color: transparent;
+  }};
+  /* background-color: transparent; */
   color: #ffffff;
-  font-size: 20px;
-  font-weight: bold;
   font-family: "Inter";
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 200;
   text-align: center;
   border-radius: 50px;
-
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `
