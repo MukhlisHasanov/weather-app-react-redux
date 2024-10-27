@@ -52,35 +52,34 @@ export const WeatherBar = styled.div`
 export const WeatherContainer = styled.div`
   display: flex;
   flex-direction: row;
-
 `
 
 export const WeatherCondition = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  `
+`
 
 export const Temperature = styled.div`
-width: 100%;
-height: 69px;
-font-family: "Inter";
-font-size: 57px;
-font-weight: 500;
-line-height: 70px;
-text-align: left;
-color: #FFFFFF;
+  width: 100%;
+  height: 69px;
+  font-family: "Inter";
+  font-size: 57px;
+  font-weight: 500;
+  line-height: 70px;
+  text-align: left;
+  color: #ffffff;
 `
 
 export const City = styled.div`
-width: 100%;
-height: 23px;
-font-family: "Inter";
-font-size: 20px;
-font-weight: 700;
-line-height: 25px;
-text-align: left;
-color: #FFFFFF;
+  width: 100%;
+  height: 23px;
+  font-family: "Inter";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  text-align: left;
+  color: #ffffff;
 `
 
 export const Icons = styled.div``
@@ -88,5 +87,11 @@ export const Icons = styled.div``
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-padding: 8px;
+  /* padding: 8px; */
+  justify-content: space-evenly;
+`
+
+export const StandardButton = styled.div`
+  height: 48px;
+  width: 146px;
 `

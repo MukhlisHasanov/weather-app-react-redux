@@ -5,6 +5,7 @@ import { colors } from "styles/colors"
 interface ButtonComponentStyleProps {
   $isDeleteVariant: boolean
   $isSearchButton: boolean
+  $isStandardButton: boolean
 }
 
 export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
@@ -27,6 +28,16 @@ export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
       }
     }
   }};
+
+border: ${({ $isStandardButton }) => {
+    if ($isStandardButton) {
+      return `1px solid ${colors.WHITE}`;
+    } else {
+        return `0px`;
+    }
+  }};
+
+
   /* background-color: transparent; */
   color: #ffffff;
   font-family: "Inter";

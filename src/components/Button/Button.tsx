@@ -8,6 +8,7 @@ function Button({
   isDeleteVariant = false,
   disabled = false,
   isSearchButton = false,
+  isStandardButton = false,
 }: ButtonProps) {
   return (
     <ButtonComponent
@@ -16,6 +17,7 @@ function Button({
       type={type}
       disabled={disabled}
       $isSearchButton={isSearchButton}
+      $isStandardButton={isStandardButton}
     >
       {name}
     </ButtonComponent>

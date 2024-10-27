@@ -20,6 +20,7 @@ import {
   City,
   Icons,
   ButtonContainer,
+  StandardButton,
 } from "./styles"
 // import { EMPLOYEE_FORM_NAMES } from "./types"
 
@@ -39,61 +40,41 @@ function HomePage() {
   //   },
   // })
 
-  //   return (
-  //     <SearchForm onSubmit={formik.handleSubmit}>
-  //       <InputContainer>
-  //         <Input
-  //           id="search-input"
-  //           // name={EMPLOYEE_FORM_NAMES.NAME}
-  //           placeholder="Enter city"
-  //           // onChange={formik.handleChange}
-  //           // value={formik.values.name}
-  //           // error={formik.errors.name}
-  //         />
-  //       </InputContainer>
-  // <SearchButtonContainer>
-  // <Button type="submit" name="Search" />
-  // </SearchButtonContainer>
-
-  //     </SearchForm>
-
-  //     <WeatherBar>
-  //       <WeatherContainer>
-  //         <WeatherCondition>
-  //         <Temperature></Temperature>
-  //         <City></City>
-  //         </WeatherCondition>
-  //         <Icons></Icons>
-  //       </WeatherContainer>
-  //       <ButtonContainer>
-  //       <Button name="Save" onClick={}/>
-  //       <Button name="Delete" onClick={} />
-  //       </ButtonContainer>
-  //     </WeatherBar>
-  //   )
-
-  return(
-  <PageWrapper>
-    <SearchForm>
-      <InputContainer></InputContainer>
-      <SearchButtonContainer>
-        <Button type="submit" name="Search" isSearchButton/> 
-      </SearchButtonContainer>
-    </SearchForm>
-    <WeatherBar>
-      <WeatherContainer>
-        <WeatherCondition>
-          <Temperature>18.0</Temperature>
-          <City>Colrado</City>
-        </WeatherCondition>
-        <Icons>Icons</Icons>
-      </WeatherContainer>
-      <ButtonContainer>
-        <Button name="Save"  />
-        <Button name="Delete"  />
-      </ButtonContainer>
-    </WeatherBar>
-  </PageWrapper>
+  return (
+    <PageWrapper>
+      <SearchForm>
+        <InputContainer>
+          <Input
+            id="search-city"
+            name="search-city"
+            placeholder="Enter city"
+            // onChange={formik.handleChange}
+            // value={formik.values.name}
+            // error={formik.errors.name}
+          />
+        </InputContainer>
+        <SearchButtonContainer>
+          <Button type="submit" name="Search" isSearchButton />
+        </SearchButtonContainer>
+      </SearchForm>
+      <WeatherBar>
+        <WeatherContainer>
+          <WeatherCondition>
+            <Temperature>18.0</Temperature>
+            <City>Colrado</City>
+          </WeatherCondition>
+          <Icons>Icons</Icons>
+        </WeatherContainer>
+        <ButtonContainer>
+          <StandardButton>
+            <Button name="Save" isStandardButton/>
+          </StandardButton>
+          <StandardButton>
+            <Button name="Delete" isStandardButton/>
+          </StandardButton>
+        </ButtonContainer>
+      </WeatherBar>
+    </PageWrapper>
   )
 }
 

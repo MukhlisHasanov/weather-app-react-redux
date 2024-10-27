@@ -9,4 +9,5 @@ export interface ButtonProps {
   isDeleteVariant?: boolean
   disabled?: boolean
   isSearchButton?: boolean
+  isStandardButton?: boolean
 }
