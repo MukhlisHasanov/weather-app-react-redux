@@ -7,6 +7,8 @@ function Button({
   onClick,
   isDeleteVariant = false,
   disabled = false,
+  isSearchButton = false,
+  isStandardButton = false,
 }: ButtonProps) {
   return (
     <ButtonComponent
@@ -14,6 +16,8 @@ function Button({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      $isSearchButton={isSearchButton}
+      $isStandardButton={isStandardButton}
     >
       {name}
     </ButtonComponent>

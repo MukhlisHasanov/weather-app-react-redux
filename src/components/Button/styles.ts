@@ -4,6 +4,8 @@ import { colors } from "styles/colors"
 
 interface ButtonComponentStyleProps {
   $isDeleteVariant: boolean
+  $isSearchButton: boolean
+  $isStandardButton: boolean
 }
 
 export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
@@ -11,20 +13,37 @@ export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
   width: 100%;
   height: 48px;
   border: none;
-  background-color: ${({ $isDeleteVariant, disabled }) => {
+  background-color: ${({ $isDeleteVariant, disabled, $isSearchButton }) => {
     if (disabled) {
       return colors.GREY
     } else {
       if ($isDeleteVariant) {
         return colors.ERROR
       } else {
-        return colors.PRIMARY_BLUE
+        if ($isSearchButton) {
+          return colors.SEARCH_BLUE
+        } else {
+          return colors.TRANSPARENT
+        }
       }
     }
   }};
-  color: white;
+
+border: ${({ $isStandardButton }) => {
+    if ($isStandardButton) {
+      return `1px solid ${colors.WHITE}`;
+    } else {
+        return `0px`;
+    }
+  }};
+
+
+  /* background-color: transparent; */
+  color: #ffffff;
+  font-family: "Inter";
   font-size: 20px;
-  font-weight: bold;
-  border-radius: 4px;
+  font-weight: 200;
+  text-align: center;
+  border-radius: 50px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `

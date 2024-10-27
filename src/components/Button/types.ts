@@ -8,4 +8,6 @@ export interface ButtonProps {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void
   isDeleteVariant?: boolean
   disabled?: boolean
+  isSearchButton?: boolean
+  isStandardButton?: boolean
 }
