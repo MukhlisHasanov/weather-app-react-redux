@@ -1,7 +1,9 @@
 import { createAppSlice } from "store/createAppSlice"
 import { v4 } from "uuid"
 import { PayloadAction } from "@reduxjs/toolkit"
-import { WeatherSliceInitialState } from "./types"
+import { WeatherSliceInitialState, Weather } from "./types"
+import { WeatherFormValues } from "pages/Home/types"
+import { WEATHER_INPUT_FORM_NAMES } from "pages/Home/types"
 
 export const weatherInitialState: WeatherSliceInitialState = {
   data: [],
@@ -13,9 +15,10 @@ export const weatherSlice = createAppSlice({
   name: "WEATHER",
   initialState: weatherInitialState,
   reducers: create => ({
-    getWeather: create.asyncThunk(
-      async (_, { rejectWithValue }) => {
-        const WEATHER_API_URL: string = `https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${APP_ID}`
+    getWeather: create.asyncThunk<WeatherFormValues, { name: string }>(
+      async ({ name }, { rejectWithValue }) => {
+        const APP_ID = "9ebdcf15d86c960f135c3ffd7e10de48"
+        const WEATHER_API_URL: string = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${APP_ID}`
 
         const response = await fetch(WEATHER_API_URL)
 
@@ -28,18 +31,25 @@ export const weatherSlice = createAppSlice({
         }
       },
       {
-        pending: (state: WeatherSliceInitialState, action) => {
-          ;(state.isFetching = true), (state.error = undefined)
+        pending: (state: WeatherSliceInitialState) => {
+          state.isFetching = true
+          state.error = undefined
         },
-        fulfilled: (state: WeatherSliceInitialState, action) => {
+        fulfilled: (
+          state: WeatherSliceInitialState,
+          action: PayloadAction<WeatherFormValues>,
+        ) => {
+          const iconId = action.payload.weather[0]
+          const iconURL = `http://openweathermap.org/img/w/${iconId}.png`
+
           state.data = [
             ...state.data,
             {
+              ...action.payload,
               id: v4(),
-              name: action.payload,
-              city: action.payload,
-              temperature: action.payload,
-              image: action.payload,
+              name: action.payload.name,
+              temperature: action.payload.main,
+              image: iconURL,
             },
           ]
           state.isFetching = false
@@ -56,7 +66,7 @@ export const weatherSlice = createAppSlice({
         action: PayloadAction<{ id: string }>,
       ) => {
         state.data = state.data.filter(
-          weatherInitialState => weatherInitialState.id !== action.payload.id,
+          weatherCard => weatherCard.id !== action.payload.id,
         )
       },
     ),
@@ -64,11 +74,9 @@ export const weatherSlice = createAppSlice({
   }),
 
   selectors: {
-    weather: (state: WeatherSliceInitialState) => {
-      return state.data
-    },
+    weathers: (state: WeatherSliceInitialState) => state,
   },
 })
 
-export const weatherSliceAction = weatherSlice.actions
+export const weatherSliceActions = weatherSlice.actions
 export const weatherSliceSelectors = weatherSlice.selectors

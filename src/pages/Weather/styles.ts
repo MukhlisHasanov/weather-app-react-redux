@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { colors } from "styles/colors"
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -61,5 +62,24 @@ export const UsersNotFound = styled.p`
 
 export const ButtonControl = styled.div`
   width: 700px;
-  padding-top: 100px; //?
+  padding-top: 100px;
+`
+
+export const JokesContainer = styled.ol`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 30px;
+`
+
+export const JokeText = styled.li`
+  font-size: 24px;
+  font-weight: bold;
+`
+
+export const JokeSetup = styled.div`
+  color: ${colors.PRIMARY};
+`
+export const JokePunchline = styled.div`
+  color: ${colors.PRIMARY};
 `

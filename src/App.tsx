@@ -2,8 +2,8 @@ import GlobalStyles from "styles/GlobalStyles"
 import { Route, Routes } from "react-router-dom"
 
 import AppLayout from "pages/AppLayout/AppLayout"
-import Home from "pages/HomePage/HomePage"
-import Weathers from "pages/WeatherCards/WeatherCards"
+import Home from "pages/Home/Home"
+import Weathers from "pages/Weather/Weather"
 
 import { APP_ROUTES } from "constants/routes"
 
