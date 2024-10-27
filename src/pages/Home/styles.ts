@@ -29,8 +29,6 @@ export const InputContainer = styled.div`
 export const SearchButtonContainer = styled.div`
   height: 48px;
   width: 146px;
-  /* border-radius: 50px; */
-  /* background: linear-gradient(0deg, #3678b4, #3678b4); */
 `
 
 export const WeatherBar = styled.div`
