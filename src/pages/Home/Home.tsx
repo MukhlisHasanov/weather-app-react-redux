@@ -29,17 +29,14 @@ function HomePage() {
 
   const dispatch = useAppDispatch()
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     [EMPLOYEE_FORM_NAMES.NAME]: "",
-  //   },
+  const formik = useFormik({
 
-  //   onSubmit: values => {
-  //     dispatch(employeeSliceActions.createEmployee(values))
-  //     navigate(APP_ROUTES.WEATHERS)
-  //   },
-  // })
-
+ initialValues: {
+    city: "",
+  },
+  onSubmit: (values) => {
+    
+  },
   return (
     <PageWrapper>
       <SearchForm>
