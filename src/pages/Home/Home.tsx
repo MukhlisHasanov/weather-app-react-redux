@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
-import * as Yup from "yup"
 
 import Input from "components/Input/Input"
 import Button from "components/Button/Button"
@@ -53,10 +52,6 @@ function HomePage() {
     },
   })
 
-  // const errorMessage = () => {
-  //   dispatch(weatherSliceActions.getWeather({}))
-  // }
-
   const saveWeatherCard = () => {
     dispatch(weatherSliceActions.saveTemporaryWeatherData())
     navigate(APP_ROUTES.WEATHER)
@@ -86,48 +81,53 @@ function HomePage() {
           <Button type="submit" name="Search" isBlueButton />
         </SearchButtonContainer>
       </SearchForm>
-      {temporaryWeatherData?.name !== undefined ? (
-        <WeatherBar>
-          <MainBarBlock>
-            <WeatherContainer>
-              <WeatherCondition>
-                <Temperature>{temporaryWeatherData?.temp}</Temperature>
-                <City>{temporaryWeatherData?.name}</City>
-              </WeatherCondition>
-              <Icons>
-                <IconImg
-                  src={temporaryWeatherData?.iconURL}
-                  alt=" Weather Icon"
-                ></IconImg>
-                <IconImg
-                  src={temporaryWeatherData?.iconURL}
-                  alt=" Weather Icon"
-                ></IconImg>
-                <IconImg
-                  src={temporaryWeatherData?.iconURL}
-                  alt=" Weather Icon"
-                ></IconImg>
-              </Icons>
-            </WeatherContainer>
-          </MainBarBlock>
-          <ButtonContainer>
-            <StandardButton>
-              <Button name="Save" isStandardButton onClick={saveWeatherCard} />
-            </StandardButton>
-            <StandardButton>
-              <Button
-                name="Delete"
-                isStandardButton
-                onClick={deleteTemporaryWeatherCard}
-              />
-            </StandardButton>
-          </ButtonContainer>
-        </WeatherBar>
-      ) : (<></>
+      {
+        temporaryWeatherData?.name !== undefined && (
+          <WeatherBar>
+            <MainBarBlock>
+              <WeatherContainer>
+                <WeatherCondition>
+                  <Temperature>{temporaryWeatherData?.temp}</Temperature>
+                  <City>{temporaryWeatherData?.name}</City>
+                </WeatherCondition>
+                <Icons>
+                  <IconImg
+                    src={temporaryWeatherData?.iconURL}
+                    alt=" Weather Icon"
+                  ></IconImg>
+                  <IconImg
+                    src={temporaryWeatherData?.iconURL}
+                    alt=" Weather Icon"
+                  ></IconImg>
+                  <IconImg
+                    src={temporaryWeatherData?.iconURL}
+                    alt=" Weather Icon"
+                  ></IconImg>
+                </Icons>
+              </WeatherContainer>
+            </MainBarBlock>
+            <ButtonContainer>
+              <StandardButton>
+                <Button
+                  name="Save"
+                  isStandardButton
+                  onClick={saveWeatherCard}
+                />
+              </StandardButton>
+              <StandardButton>
+                <Button
+                  name="Delete"
+                  isStandardButton
+                  onClick={deleteTemporaryWeatherCard}
+                />
+              </StandardButton>
+            </ButtonContainer>
+          </WeatherBar>
+        )
         // <WeatherBar>
         //   <MainBarBlock>
         //     <Error>API Error</Error>
-        //     <ErrorDetails>error message</ErrorDetails>
+        //     <ErrorDetails>{weathers} </ErrorDetails>
         //   </MainBarBlock>
         //   <ButtonContainer>
         //     <StandardButton>
@@ -135,7 +135,7 @@ function HomePage() {
         //     </StandardButton>
         //   </ButtonContainer>
         // </WeatherBar>
-      )}
+      }
     </PageWrapper>
   )
 }

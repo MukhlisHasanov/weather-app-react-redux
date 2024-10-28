@@ -1,6 +1,5 @@
 import Button from "components/Button/Button"
 
-import { WeatherIconRain } from "assets"
 import {
   PageWrapper,
   WeatherBar,
@@ -13,8 +12,6 @@ import {
   IconImg,
   ButtonContainer,
   StandardButton,
-  Error,
-  ErrorDetails,
 } from "./styles"
 
 import { useAppSelector, useAppDispatch } from "store/hooks"
@@ -46,8 +43,6 @@ function Weather() {
             </WeatherCondition>
             <Icons>
               <IconImg src={weather.iconURL} alt=" Weather Icon"></IconImg>
-              <IconImg src={weather.iconURL} alt=" Weather Icon"></IconImg>
-              <IconImg src={weather.iconURL} alt=" Weather Icon"></IconImg>
             </Icons>
           </WeatherContainer>
         </MainBarBlock>
@@ -66,15 +61,19 @@ function Weather() {
 
   return (
     <PageWrapper>
-      {data.length > 0 ? weatherCards : <></>}
+      {data.length > 0 && (
+        <>
+          {weatherCards}
 
-      <ButtonContainer>
-        <Button
-          name=" Delete all cards"
-          onClick={deleteAllWeatherCards}
-          isBlueButton
-        />
-      </ButtonContainer>
+          <ButtonContainer>
+            <Button
+              name=" Delete all cards"
+              onClick={deleteAllWeatherCards}
+              isBlueButton
+            />
+          </ButtonContainer>
+        </>
+      )}
     </PageWrapper>
   )
 }

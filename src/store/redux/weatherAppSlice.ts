@@ -3,7 +3,6 @@ import { v4 } from "uuid"
 import { PayloadAction } from "@reduxjs/toolkit"
 import { ErrorMessage, WeatherSliceInitialState } from "./types"
 import { WeatherFormValues } from "pages/Home/types"
-import { WEATHER_INPUT_FORM_NAMES } from "pages/Home/types"
 
 export const weatherInitialState: WeatherSliceInitialState = {
   data: [],
@@ -24,10 +23,11 @@ export const weatherSlice = createAppSlice({
         const response = await fetch(WEATHER_API_URL)
 
         const result = await response.json()
-
+        console.log(response.ok)
         if (response.ok) {
           return result
         } else {
+          console.log(result)
           rejectWithValue(result)
         }
       },
@@ -35,6 +35,7 @@ export const weatherSlice = createAppSlice({
         pending: (state: WeatherSliceInitialState) => {
           state.isFetching = true
           state.error = undefined
+          state.temporaryWeatherData = undefined
         },
         fulfilled: (
           state: WeatherSliceInitialState,
@@ -43,7 +44,7 @@ export const weatherSlice = createAppSlice({
           const iconId = action.payload.weather[0].icon
           const iconURL = `http://openweathermap.org/img/w/${iconId}.png`
 
-          const tempC = (action.payload.main.temp - 273.15).toFixed(0)
+          const tempC = (action.payload.main.temp - 273.15).toFixed(0) + "°C"
 
           state.temporaryWeatherData = {
             name: action.payload.name,
@@ -52,16 +53,9 @@ export const weatherSlice = createAppSlice({
           }
           state.isFetching = false
         },
-        rejected: (
-          state: WeatherSliceInitialState,
-          // action: PayloadAction<ErrorMessage>,
-        ) => {
-          // if (state.error !== undefined) {
-          //   state.error = {
-          //     cod: state.data.cod,
-          //     message: state.data.message,
-          //   }
-          // }
+        rejected: (state: WeatherSliceInitialState, action) => {
+          console.log(action.error)
+          // state.error = action.payload;
           state.error = undefined
           state.isFetching = false
         },
