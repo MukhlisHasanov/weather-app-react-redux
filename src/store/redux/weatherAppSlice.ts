@@ -1,7 +1,7 @@
 import { createAppSlice } from "store/createAppSlice"
 import { v4 } from "uuid"
 import { PayloadAction } from "@reduxjs/toolkit"
-import { WeatherSliceInitialState, Weathers } from "./types"
+import { ErrorMessage, WeatherSliceInitialState } from "./types"
 import { WeatherFormValues } from "pages/Home/types"
 import { WEATHER_INPUT_FORM_NAMES } from "pages/Home/types"
 
@@ -50,16 +50,31 @@ export const weatherSlice = createAppSlice({
           }
           state.isFetching = false
         },
-        rejected: (state: WeatherSliceInitialState) => {
-          state.error = ""
+        rejected: (
+          state: WeatherSliceInitialState,
+          action: PayloadAction<ErrorMessage>,
+        ) => {
+          if (state.error !== undefined) {
+            state.error = {
+              cod: action.payload.cod,
+              message: action.payload.message,
+            }
+          }
+          state.error = undefined
           state.isFetching = false
         },
       },
     ),
 
     saveTemporaryWeatherData: create.reducer(
-      (state: WeatherSliceInitialState, action: PayloadAction<Weathers>) => {
-        state.data = [...state.data, { ...action.payload, id: v4() }]
+      (state: WeatherSliceInitialState) => {
+        if (state.temporaryWeatherData !== undefined) {
+          state.data = [
+            ...state.data,
+            { ...state.temporaryWeatherData, id: v4() },
+          ]
+          state.temporaryWeatherData = undefined
+        }
       },
     ),
 

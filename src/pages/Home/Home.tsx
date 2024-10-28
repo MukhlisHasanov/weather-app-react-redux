@@ -7,7 +7,6 @@ import Button from "components/Button/Button"
 
 import { APP_ROUTES } from "constants/routes"
 import { useAppDispatch, useAppSelector } from "store/hooks"
-import { WeatherIconRain } from "assets"
 import {
   weatherSliceActions,
   weatherSliceSelectors,
@@ -55,13 +54,15 @@ function HomePage() {
   })
 
   const saveWeatherCard = () => {
-    dispatch(weatherSliceActions.saveTemporaryWeatherData(temporaryWeatherData))
+    dispatch(weatherSliceActions.saveTemporaryWeatherData())
     navigate(APP_ROUTES.WEATHER)
   }
 
   const deleteTemporaryWeatherCard = () => {
     dispatch(weatherSliceActions.deleteTemporaryWeatherData())
   }
+
+  
 
   return (
     <PageWrapper>
@@ -79,46 +80,48 @@ function HomePage() {
           <Button type="submit" name="Search" isBlueButton />
         </SearchButtonContainer>
       </SearchForm>
-      <WeatherBar>
-        <MainBarBlock>
-          <WeatherContainer>
-            <WeatherCondition>
-              <Temperature>{temporaryWeatherData?.temp}</Temperature>
-              <City>{temporaryWeatherData?.name}</City>
-            </WeatherCondition>
-            <Icons>
-              <IconImg
-                src={temporaryWeatherData?.iconURL}
-                alt=" Weather Icon"
-              ></IconImg>
-            </Icons>
-          </WeatherContainer>
-        </MainBarBlock>
-        <ButtonContainer>
-          <StandardButton>
-            <Button name="Save" isStandardButton onClick={saveWeatherCard} />
-          </StandardButton>
-          <StandardButton>
-            <Button
-              name="Delete"
-              isStandardButton
-              onClick={deleteTemporaryWeatherCard}
-            />
-          </StandardButton>
-        </ButtonContainer>
-      </WeatherBar>
-
-      <WeatherBar>
-        <MainBarBlock>
-          <Error>API Error</Error>
-          <ErrorDetails>Something went wrong with API data</ErrorDetails>
-        </MainBarBlock>
-        <ButtonContainer>
-          <StandardButton>
-            <Button name="Delete" isStandardButton />
-          </StandardButton>
-        </ButtonContainer>
-      </WeatherBar>
+      {temporaryWeatherData?.name !== undefined ? (
+        <WeatherBar>
+          <MainBarBlock>
+            <WeatherContainer>
+              <WeatherCondition>
+                <Temperature>{temporaryWeatherData?.temp}</Temperature>
+                <City>{temporaryWeatherData?.name}</City>
+              </WeatherCondition>
+              <Icons>
+                <IconImg
+                  src={temporaryWeatherData?.iconURL}
+                  alt=" Weather Icon"
+                ></IconImg>
+              </Icons>
+            </WeatherContainer>
+          </MainBarBlock>
+          <ButtonContainer>
+            <StandardButton>
+              <Button name="Save" isStandardButton onClick={saveWeatherCard} />
+            </StandardButton>
+            <StandardButton>
+              <Button
+                name="Delete"
+                isStandardButton
+                onClick={deleteTemporaryWeatherCard}
+              />
+            </StandardButton>
+          </ButtonContainer>
+        </WeatherBar>
+      ) : (
+        <WeatherBar>
+          <MainBarBlock>
+            <Error>API Error</Error>
+            <ErrorDetails>{error}</ErrorDetails>
+          </MainBarBlock>
+          <ButtonContainer>
+            <StandardButton>
+              <Button name="Delete" isStandardButton type="reset" />
+            </StandardButton>
+          </ButtonContainer>
+        </WeatherBar>
+      )}
     </PageWrapper>
   )
 }

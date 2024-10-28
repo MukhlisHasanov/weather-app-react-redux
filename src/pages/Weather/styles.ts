@@ -82,3 +82,22 @@ export const StandardButton = styled.div`
   height: 48px;
   width: 146px;
 `
+
+export const Error = styled.div`
+  height: 70px;
+  font-family: "Inter";
+  font-size: 57px;
+  font-weight: 500;
+  text-align: center;
+  color: #f35e5e;
+`
+
+export const ErrorDetails = styled.div`
+  width: 100%;
+  height: 22px;
+  font-family: "Inter";
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+`

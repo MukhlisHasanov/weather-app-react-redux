@@ -1,8 +1,5 @@
-import { InputProps } from "./types";
-import {
-  InputWrapper,
-  InputComponent,
-} from "./styles";
+import { InputProps } from "./types"
+import { InputComponent } from "./styles"
 
 function Input({
   id,
@@ -14,18 +11,16 @@ function Input({
   onChange,
 }: InputProps) {
   return (
-    <InputWrapper>
-      <InputComponent
-        id={id}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        disabled={disabled}
-        value={value}
-        onChange={onChange}
-      />
-    </InputWrapper>
-  );
+    <InputComponent
+      id={id}
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      disabled={disabled}
+      value={value}
+      onChange={onChange}
+    />
+  )
 }
 
-export default Input;
+export default Input

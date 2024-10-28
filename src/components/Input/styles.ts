@@ -1,18 +1,6 @@
 import styled from "@emotion/styled"
 
-import { colors } from "styles/colors"
-
-export interface InputComponentStyleProps {
-  $error?: string | undefined
-}
-
-export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`
-
-export const InputComponent = styled.input<InputComponentStyleProps>`
+export const InputComponent = styled.input`
   width: 100%;
   height: 48px;
   border: 0px;
@@ -23,12 +11,11 @@ export const InputComponent = styled.input<InputComponentStyleProps>`
   font-size: 20px;
   font-weight: 400;
   text-align: left;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: transparent;
 
-
   &::placeholder {
-    /* color: #f7f7f7; */
+    color: #f7f7f7;
     font-size: 20px;
   }
 `

@@ -13,46 +13,63 @@ import {
   IconImg,
   ButtonContainer,
   StandardButton,
+  Error,
+  ErrorDetails,
 } from "./styles"
 
 import { useAppSelector, useAppDispatch } from "store/hooks"
-import { weatherSliceSelectors } from "store/redux/weatherAppSlice"
+import {
+  weatherSliceActions,
+  weatherSliceSelectors,
+} from "store/redux/weatherAppSlice"
 import { Weathers } from "store/redux/types"
 
 function Weather() {
   const dispatch = useAppDispatch()
 
-  const weatherInitialState = useAppSelector(weatherSliceSelectors.weathers)
+  const deleteAllWeatherCards = () => {
+    dispatch(weatherSliceActions.deleteAllWeatherCards())
+  }
+  const { data } = useAppSelector(weatherSliceSelectors.weathers)
 
-
-  return (
-    <PageWrapper>
+  const weatherCards = data.map((weather: Weathers) => {
+    const deleteWeatherCard = () => {
+      dispatch(weatherSliceActions.deleteWeatherCard({ id: weather.id }))
+    }
+    return (
       <WeatherBar>
         <MainBarBlock>
           <WeatherContainer>
             <WeatherCondition>
-              <Temperature>18.0</Temperature>
-              <City>Colrado</City>
+              <Temperature>{weather.temp}</Temperature>
+              <City>{weather.name}</City>
             </WeatherCondition>
             <Icons>
-              <IconImg src={WeatherIconRain} alt=" Weather Icon"></IconImg>
+              <IconImg src={weather.iconURL} alt=" Weather Icon"></IconImg>
             </Icons>
           </WeatherContainer>
         </MainBarBlock>
         <ButtonContainer>
           <StandardButton>
-            <Button name="Save" isStandardButton />
-          </StandardButton>
-          <StandardButton>
-            <Button name="Delete" isStandardButton />
+            <Button
+              name="Delete"
+              isStandardButton
+              onClick={deleteWeatherCard}
+            />
           </StandardButton>
         </ButtonContainer>
       </WeatherBar>
+    )
+  })
+
+  return (
+    <PageWrapper>
+      {data.length > 0 ? weatherCards : <></>}
 
       <ButtonContainer>
         <Button
           name=" Delete all cards"
-          // onClick={}
+          onClick={deleteAllWeatherCards}
           isBlueButton
         />
       </ButtonContainer>
