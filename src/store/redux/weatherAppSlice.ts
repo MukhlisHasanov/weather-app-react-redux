@@ -1,7 +1,7 @@
 import { createAppSlice } from "store/createAppSlice"
 import { v4 } from "uuid"
 import { PayloadAction } from "@reduxjs/toolkit"
-import { WeatherSliceInitialState, Weather } from "./types"
+import { WeatherSliceInitialState, Weathers } from "./types"
 import { WeatherFormValues } from "pages/Home/types"
 import { WEATHER_INPUT_FORM_NAMES } from "pages/Home/types"
 
@@ -9,6 +9,7 @@ export const weatherInitialState: WeatherSliceInitialState = {
   data: [],
   error: undefined,
   isFetching: false,
+  temporaryWeatherData: undefined,
 }
 
 export const weatherSlice = createAppSlice({
@@ -37,21 +38,16 @@ export const weatherSlice = createAppSlice({
         },
         fulfilled: (
           state: WeatherSliceInitialState,
-          action: PayloadAction<WeatherFormValues>,
+          action: PayloadAction<any>,
         ) => {
-          const iconId = action.payload.weather[0]
+          const iconId = action.payload.weather[0].icon
           const iconURL = `http://openweathermap.org/img/w/${iconId}.png`
 
-          state.data = [
-            ...state.data,
-            {
-              ...action.payload,
-              id: v4(),
-              name: action.payload.name,
-              temperature: action.payload.main,
-              image: iconURL,
-            },
-          ]
+          state.temporaryWeatherData = {
+            name: action.payload.name,
+            temp: action.payload.main.temp,
+            iconURL: iconURL,
+          }
           state.isFetching = false
         },
         rejected: (state: WeatherSliceInitialState) => {

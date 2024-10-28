@@ -29,7 +29,7 @@ function AppLayout({ children }: AppLayoutProps) {
       <HeaderLink
         key={v4()}
         style={({ isActive }) => ({
-          fontWeight: isActive ? "bold" : "normal",
+          fontWeight: isActive ? "700" : "normal",
         })}
         to={link}
       >

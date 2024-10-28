@@ -4,7 +4,7 @@ import { colors } from "styles/colors"
 
 interface ButtonComponentStyleProps {
   $isDeleteVariant: boolean
-  $isSearchButton: boolean
+  $isBlueButton: boolean
   $isStandardButton: boolean
 }
 
@@ -13,15 +13,15 @@ export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
   width: 100%;
   height: 48px;
   border: none;
-  background-color: ${({ $isDeleteVariant, disabled, $isSearchButton }) => {
+  background-color: ${({ $isDeleteVariant, disabled, $isBlueButton }) => {
     if (disabled) {
       return colors.GREY
     } else {
       if ($isDeleteVariant) {
         return colors.ERROR
       } else {
-        if ($isSearchButton) {
-          return colors.SEARCH_BLUE
+        if ($isBlueButton) {
+          return colors.BLUE_BUTTON
         } else {
           return colors.TRANSPARENT
         }
