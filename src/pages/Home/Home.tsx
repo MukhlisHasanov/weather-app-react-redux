@@ -6,9 +6,12 @@ import Input from "components/Input/Input"
 import Button from "components/Button/Button"
 
 import { APP_ROUTES } from "constants/routes"
-import { useAppDispatch } from "store/hooks"
+import { useAppDispatch, useAppSelector } from "store/hooks"
 import { WeatherIconRain } from "assets"
-import { weatherSliceActions } from "store/redux/WeatherAppSlice"
+import {
+  weatherSliceActions,
+  weatherSliceSelectors,
+} from "store/redux/weatherAppSlice"
 
 import {
   PageWrapper,
@@ -31,8 +34,11 @@ import {
 import { WEATHER_INPUT_FORM_NAMES } from "./types"
 function HomePage() {
   const navigate = useNavigate()
-
   const dispatch = useAppDispatch()
+
+  const { data, error, isFetching, temporaryWeatherData } = useAppSelector(
+    weatherSliceSelectors.weathers,
+  )
 
   const formik = useFormik({
     initialValues: {
@@ -47,6 +53,15 @@ function HomePage() {
       )
     },
   })
+
+  const saveWeatherCard = () => {
+    dispatch(weatherSliceActions.saveTemporaryWeatherData(temporaryWeatherData))
+    navigate(APP_ROUTES.WEATHER)
+  }
+
+  const deleteTemporaryWeatherCard = () => {
+    dispatch(weatherSliceActions.deleteTemporaryWeatherData())
+  }
 
   return (
     <PageWrapper>
@@ -68,20 +83,27 @@ function HomePage() {
         <MainBarBlock>
           <WeatherContainer>
             <WeatherCondition>
-              <Temperature>18.0</Temperature>
-              <City>Colrado</City>
+              <Temperature>{temporaryWeatherData?.temp}</Temperature>
+              <City>{temporaryWeatherData?.name}</City>
             </WeatherCondition>
             <Icons>
-              <IconImg src={WeatherIconRain} alt=" Weather Icon"></IconImg>
+              <IconImg
+                src={temporaryWeatherData?.iconURL}
+                alt=" Weather Icon"
+              ></IconImg>
             </Icons>
           </WeatherContainer>
         </MainBarBlock>
         <ButtonContainer>
           <StandardButton>
-            <Button name="Save" isStandardButton />
+            <Button name="Save" isStandardButton onClick={saveWeatherCard} />
           </StandardButton>
           <StandardButton>
-            <Button name="Delete" isStandardButton />
+            <Button
+              name="Delete"
+              isStandardButton
+              onClick={deleteTemporaryWeatherCard}
+            />
           </StandardButton>
         </ButtonContainer>
       </WeatherBar>

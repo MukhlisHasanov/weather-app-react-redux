@@ -1,5 +1,5 @@
 export enum APP_ROUTES {
   HOME = "/home",
-  WEATHERS = "/weathers",
+  WEATHER = "/weather",
   NOT_FOUND = "*",
 }

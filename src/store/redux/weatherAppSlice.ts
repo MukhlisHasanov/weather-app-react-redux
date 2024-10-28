@@ -56,6 +56,19 @@ export const weatherSlice = createAppSlice({
         },
       },
     ),
+
+    saveTemporaryWeatherData: create.reducer(
+      (state: WeatherSliceInitialState, action: PayloadAction<Weathers>) => {
+        state.data = [...state.data, { ...action.payload, id: v4() }]
+      },
+    ),
+
+    deleteTemporaryWeatherData: create.reducer(
+      (state: WeatherSliceInitialState) => {
+        state.temporaryWeatherData = undefined
+      },
+    ),
+
     deleteWeatherCard: create.reducer(
       (
         state: WeatherSliceInitialState,

@@ -21,7 +21,7 @@ function AppLayout({ children }: AppLayoutProps) {
   }
   const appLinks = {
     [APP_ROUTES.HOME]: "Home",
-    [APP_ROUTES.WEATHERS]: "Weathers",
+    [APP_ROUTES.WEATHER]: "Weather",
   }
 
   const headerLinks = Object.keys(appLinks).map((link: string) => {

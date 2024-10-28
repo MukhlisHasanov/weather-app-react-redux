@@ -16,43 +16,14 @@ import {
 } from "./styles"
 
 import { useAppSelector, useAppDispatch } from "store/hooks"
-import { weatherSliceSelectors } from "store/redux/WeatherAppSlice"
+import { weatherSliceSelectors } from "store/redux/weatherAppSlice"
 import { Weathers } from "store/redux/types"
 
 function Weather() {
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
-  // const weatherInitialState = useAppSelector(weatherSliceSelectors.weathers)
-  // const weatherCards = weatherInitialState.map((weather: Weathers) => {
-  //   return (
-  //     <PageWrapper>
-  //       <WeatherContainer>
-  //         <CardLabel>
-  //           <LabelName>City:</LabelName>
-  //           <CardItem>{weather.name}</CardItem>
-  //         </CardLabel>
-  //         <CardLabel>
-  //           <LabelName>Temp:</LabelName>
-  //           <CardItem>{weather.temperature}</CardItem>
-  //         </CardLabel>
-  //         <CardLabel>
-  //           <LabelName>IMG:</LabelName>
-  //           <CardItem>{weather.image}</CardItem>
-  //         </CardLabel>
-  //         <CardLabel>
-  //           <LabelName>ID:</LabelName>
-  //           <CardItem>{weather.id}</CardItem>
-  //         </CardLabel>
-  //       </WeatherContainer>
-  //     </PageWrapper>
-  //   )
-  // })
-  //   return (
-  //     <PageWrapper>
-  //       <CardsPosition>{weatherCards}</CardsPosition>
-  //     </PageWrapper>
-  //   )
-  // }
+  const weatherInitialState = useAppSelector(weatherSliceSelectors.weathers)
+
 
   return (
     <PageWrapper>
