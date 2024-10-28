@@ -46,6 +46,8 @@ function Weather() {
             </WeatherCondition>
             <Icons>
               <IconImg src={weather.iconURL} alt=" Weather Icon"></IconImg>
+              <IconImg src={weather.iconURL} alt=" Weather Icon"></IconImg>
+              <IconImg src={weather.iconURL} alt=" Weather Icon"></IconImg>
             </Icons>
           </WeatherContainer>
         </MainBarBlock>

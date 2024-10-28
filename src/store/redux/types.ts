@@ -13,7 +13,7 @@ export interface TemporaryData {
 
 export interface WeatherSliceInitialState {
   data: Weathers[]
-  error: undefined | ErrorMessage
+  error: ErrorMessage | undefined
   isFetching: boolean
   temporaryWeatherData: undefined | TemporaryData
 }

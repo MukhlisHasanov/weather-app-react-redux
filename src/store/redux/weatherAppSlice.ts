@@ -43,23 +43,25 @@ export const weatherSlice = createAppSlice({
           const iconId = action.payload.weather[0].icon
           const iconURL = `http://openweathermap.org/img/w/${iconId}.png`
 
+          const tempC = (action.payload.main.temp - 273.15).toFixed(0)
+
           state.temporaryWeatherData = {
             name: action.payload.name,
-            temp: action.payload.main.temp,
+            temp: tempC,
             iconURL: iconURL,
           }
           state.isFetching = false
         },
         rejected: (
           state: WeatherSliceInitialState,
-          action: PayloadAction<ErrorMessage>,
+          // action: PayloadAction<ErrorMessage>,
         ) => {
-          if (state.error !== undefined) {
-            state.error = {
-              cod: action.payload.cod,
-              message: action.payload.message,
-            }
-          }
+          // if (state.error !== undefined) {
+          //   state.error = {
+          //     cod: state.data.cod,
+          //     message: state.data.message,
+          //   }
+          // }
           state.error = undefined
           state.isFetching = false
         },

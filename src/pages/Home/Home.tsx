@@ -53,6 +53,10 @@ function HomePage() {
     },
   })
 
+  // const errorMessage = () => {
+  //   dispatch(weatherSliceActions.getWeather({}))
+  // }
+
   const saveWeatherCard = () => {
     dispatch(weatherSliceActions.saveTemporaryWeatherData())
     navigate(APP_ROUTES.WEATHER)
@@ -62,7 +66,9 @@ function HomePage() {
     dispatch(weatherSliceActions.deleteTemporaryWeatherData())
   }
 
-  
+  const deleteError = () => {
+    navigate(APP_ROUTES.HOME)
+  }
 
   return (
     <PageWrapper>
@@ -93,6 +99,14 @@ function HomePage() {
                   src={temporaryWeatherData?.iconURL}
                   alt=" Weather Icon"
                 ></IconImg>
+                <IconImg
+                  src={temporaryWeatherData?.iconURL}
+                  alt=" Weather Icon"
+                ></IconImg>
+                <IconImg
+                  src={temporaryWeatherData?.iconURL}
+                  alt=" Weather Icon"
+                ></IconImg>
               </Icons>
             </WeatherContainer>
           </MainBarBlock>
@@ -109,18 +123,18 @@ function HomePage() {
             </StandardButton>
           </ButtonContainer>
         </WeatherBar>
-      ) : (
-        <WeatherBar>
-          <MainBarBlock>
-            <Error>API Error</Error>
-            <ErrorDetails>{error}</ErrorDetails>
-          </MainBarBlock>
-          <ButtonContainer>
-            <StandardButton>
-              <Button name="Delete" isStandardButton type="reset" />
-            </StandardButton>
-          </ButtonContainer>
-        </WeatherBar>
+      ) : (<></>
+        // <WeatherBar>
+        //   <MainBarBlock>
+        //     <Error>API Error</Error>
+        //     <ErrorDetails>error message</ErrorDetails>
+        //   </MainBarBlock>
+        //   <ButtonContainer>
+        //     <StandardButton>
+        //       <Button name="Delete" isStandardButton onClick={deleteError} />
+        //     </StandardButton>
+        //   </ButtonContainer>
+        // </WeatherBar>
       )}
     </PageWrapper>
   )
